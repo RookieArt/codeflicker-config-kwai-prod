@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Write(/dynamo-k8s-demo-plan.md)",
+      "Edit(/dynamo-k8s-todo.md)"
+    ]
+  }
+}

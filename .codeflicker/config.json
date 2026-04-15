@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Write(/dynamo-k8s-demo-plan.md)"
+    ]
+  },
+  "plansDirectory": ".plans"
+}
