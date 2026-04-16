@@ -1,3 +1,9 @@
+---
+name: github-clone
+description: 从 GitHub 下载开源项目到本地
+version: 1.0.0
+---
+
 # GitHub Clone Skill
 
 从 GitHub 下载开源项目到本地。

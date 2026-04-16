@@ -1,3 +1,9 @@
+---
+name: hf-download
+description: 从 HuggingFace 或镜像站下载开源模型到本地
+version: 1.0.0
+---
+
 # HuggingFace 模型下载 Skill
 
 从 HuggingFace 或镜像站下载开源模型到本地。
@@ -89,3 +95,27 @@ snapshot_download(
     endpoint="https://hf-mirror.com",
 )
 ```
+
+## Kubernetes 部署集成
+
+下载模型后用于 Kubernetes 部署：
+
+1. **复制到 minikube**（docker 驱动）：
+   ```bash
+   docker exec minikube mkdir -p /mnt/models
+   docker cp ./Qwen3-0.6B minikube:/mnt/models/
+   ```
+
+2. **在 Pod 中使用 hostPath 挂载**：
+   ```yaml
+   volumeMounts:
+     - name: model-storage
+       mountPath: /mnt/models
+   volumes:
+     - name: model-storage
+       hostPath:
+         path: /mnt/models
+         type: Directory
+   ```
+
+详见 `minikube-model-mount` skill。
