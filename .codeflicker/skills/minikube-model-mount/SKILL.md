@@ -26,10 +26,11 @@ hf download Qwen/Qwen3-0.6B --local-dir ./models/Qwen3-0.6B
 
 ```bash
 # 创建目标目录
-docker exec minikube mkdir -p /mnt/models
+docker exec minikube mkdir -p /mnt/models/Qwen3-0.6B
 
-# 复制模型目录
-docker cp ./models/Qwen3-0.6B minikube:/mnt/models/
+# 复制模型目录内容到目标目录
+# 注意路径末尾的 `/.`，确保拷贝的是内容而非整个文件夹嵌套
+docker cp ./models/Qwen3-0.6B/. minikube:/mnt/models/Qwen3-0.6B/
 ```
 
 ### 3. 验证复制成功
@@ -94,8 +95,9 @@ spec:
       componentType: worker
       extraPodSpec:
         mainContainer:
+          # 对于 SGLang 需要是 --model
           args:
-            - --model-path
+            - --model
             - /mnt/models/Qwen3-0.6B
           volumeMounts:
             - name: model-storage
